@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block header %}  
+    {{ title|upper }}
+{% endblock %} 
+
+{% block content %}
+
+    <h2> {{ text }} </h2>
+
+    <form method='post' class="navbar-form navbar-left">
+        {% csrf_token %}
+        <div class="form-group">
+          {% render_field form.text class="form-control" placeholder="Buscar" %}
+          <strong class="text-danger"> {{ form.text.errors }} </strong>
+        </div>
+        <div class="form-group">
+          {% render_field form.fecha class="form-control" placeholder="aaaa" %}
+          <strong class="text-danger"> {{ form.fecha.errors }} </strong>
+        </div>
+        <button type="submit" class="btn btn-success">Buscar</button>
+    </form>
+        
+    {% if object_list %}
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Ciudad</th>
+                    <th>Temperatura</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in object_list %}
+                    <tr>
+                        <td> {{ obj.id_estacion.id_ciudad.nombre }} </td>
+                        <td> {{ obj.tmax }} </td>
+                    </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

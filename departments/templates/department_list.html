@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block header %}  
+    {{ title|upper }}
+{% endblock %} 
+
+{% block content %}
+
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    <td> {{ obj.id }} </td>
+                    <td> {{ obj.nombre_dpto }} </td>
+                    <td> {{ obj.nombre_cap }} </td>
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+
+{% endblock %}
