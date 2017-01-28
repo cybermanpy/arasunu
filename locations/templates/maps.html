@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/maps.css' %}">
+    <title>Maps</title>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/maps.js' %}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXoxMo8mD2g_3DV-hZew8ev0PhGj2RAJc&callback=initMap"></script>
+</body>
+</html>

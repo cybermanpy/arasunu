@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('departments.urls', namespace='departments')),
     url(r'^', include('climatologies.urls', namespace='climatologies')),
+    url(r'^', include('locations.urls', namespace='locations')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
