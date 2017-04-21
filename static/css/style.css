@@ -1,4 +1,7 @@
-body { padding-bottom: 70px; }
+body { 
+	margin-left: 50px;
+	padding-bottom: 70px; 
+}
 @media (min-width: 900px) {
     .container {
         width: 900px;

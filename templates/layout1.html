@@ -1,0 +1,83 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=divice-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/weather.css' %}">
+    <title> {% block title %}  {% endblock %} </title>
+</head>
+<body id="weather-background" class="default-weather">
+    <section class="container">
+        <header>
+            <div class="page-header">
+                <h4> {% block header %}  {% endblock %} </h4>
+            </div>
+            {# % if user.is_authenticated % #}
+            <nav class="navbar navbar-inverse" role="navigation">
+              <!-- El logotipo y el icono que despliega el menú se agrupan
+                   para mostrarlos mejor en los dispositivos móviles -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Desplegar navegación</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{# % url 'climatologies:weather' % #}">Inicio</a>
+              </div>
+             
+              <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+                   otro elemento que se pueda ocultar al minimizar la barra -->
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Temperaturas <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url 'climatologies:history' %}">Historicos</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Crecidas <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="">Listar</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Estadisticas <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="">Listar</a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                   <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Login
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            {# % endif % #}
+        </header>
+
+        {% block content %} {% endblock %}
+    </section>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/weather.js' %}"></script>
+    
+</body>
+</html>

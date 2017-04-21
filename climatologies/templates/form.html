@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block header %}
+    {{ title|upper }}
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+    $("#id_text").change(function () {
+      console.log( $(this).val() );
+    });
+
+    $("#id_year").change(function () {
+      console.log( $(this).val() );
+    });
+
+    $("#id_year").change(function () {
+      var year = $(this).val();
+      // var text = $(this).val();
+      // var year = $("#id_year").val();
+      // console.log(year);
+
+      $.ajax({
+        url: "{% url 'climatologies:climaParam' %}",
+        data: {
+          // 'text': text,
+          'year': year
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("El dato existe");
+          }
+        }
+      });
+
+    });
+  </script>
+{% endblock %}
+
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}

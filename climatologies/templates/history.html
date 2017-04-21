@@ -32,6 +32,7 @@
                 <tr>
                     <th>Ciudad</th>
                     <th>Temperatura</th>
+                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +40,7 @@
                     <tr>
                         <td> {{ obj.id_estacion.id_ciudad.nombre }} </td>
                         <td> {{ obj.tmax }} </td>
+                        <td> {{ obj.fecha }} </td>
                     </tr>
                 {% endfor%}
             </tbody>

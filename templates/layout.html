@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=divice-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/weather.css' %}">
     <title> {% block title %}  {% endblock %} </title>
 </head>
 <body id="weather-background" class="default-weather">
@@ -28,7 +27,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'climatologies:weather' %}">Inicio</a>
+                <a class="navbar-brand" href="{# % url 'climatologies:weather' % #}">Inicio</a>
               </div>
              
               <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -77,7 +76,7 @@
     </section>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/weather.js' %}"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    {% block javascript %}{% endblock %}
 </body>
 </html>

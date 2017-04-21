@@ -7,3 +7,10 @@ class FormSearch(forms.Form):
     city_list = City.objects.all().order_by('nombre')
     text = forms.ChoiceField(choices=((x.nombre, x.nombre) for x in city_list ), error_messages={'required': 'Este campo es obligatorio'})
     fecha = forms.ChoiceField(choices=n, error_messages={'required': 'Este campo es obligatorio'})
+
+class FormGraphic(forms.Form):
+    n = tuple((str(n), str(n)) for n in range(1973, datetime.now().year + 1))
+    year = forms.ChoiceField(choices=n, error_messages={'required': 'Este campo es obligatorio'})
+    city_list = City.objects.all().order_by('nombre')
+    text = forms.ChoiceField(choices=((x.nombre, x.nombre) for x in city_list ), error_messages={'required': 'Este campo es obligatorio'})
+    #year = forms.CharField(label='year')
