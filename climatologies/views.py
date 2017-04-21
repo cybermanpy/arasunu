@@ -57,9 +57,9 @@ def Graphic(request):
 
 def climaParam(request):
     year = request.GET.get('year', None)
-    # text = request.GET.get('text', None)
+    text = request.GET.get('text', None)
     data = {
-        'is_taken': Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains='Luque', fecha__year=year).exists()
+        'is_taken': Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains=text, fecha__year=year).exists()
     }
     return JsonResponse(data)
 

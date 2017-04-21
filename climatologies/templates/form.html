@@ -23,19 +23,19 @@
     $("#id_year").change(function () {
       var year = $(this).val();
       // var text = $(this).val();
-      // var year = $("#id_year").val();
+      var text = $("#id_text").val();
       // console.log(year);
 
       $.ajax({
         url: "{% url 'climatologies:climaParam' %}",
         data: {
-          // 'text': text,
+          'text': text,
           'year': year
         },
         dataType: 'json',
         success: function (data) {
           if (data.is_taken) {
-            alert("El dato existe");
+            alert("El dato existe"+ "-" + text);
           }
         }
       });
