@@ -12,6 +12,39 @@
 {% block javascript %}
 <script>
 
+    // $("#id_text").change(function () {
+    //   console.log( $(this).val() );
+    // });
+
+    // $("#id_year").change(function () {
+    //   console.log( $(this).val() );
+    // });
+
+    // $("#id_year").change(function () {
+    //   var year = $(this).val();
+    //   // var text = $(this).val();
+    //   var text = $("#id_text").val();
+    //   // console.log(year);
+
+    //   $.ajax({
+    //     url: "{% url 'climatologies:climaParam' %}",
+    //     data: {
+    //       'text': text,
+    //       'year': year
+    //     },
+    //     dataType: 'json',
+    //     success: function (data) {
+    //       if (data.is_taken) {
+    //         alert("El dato existe"+ "-" + text);
+    //       }
+    //     }
+    //   });
+
+    // });
+</script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
     $("#id_text").change(function () {
       console.log( $(this).val() );
     });
@@ -19,36 +52,51 @@
     $("#id_year").change(function () {
       console.log( $(this).val() );
     });
+    $("#id_month").change(function () {
+      console.log( $(this).val() );
+    });
 
     $("#id_year").change(function () {
       var year = $(this).val();
-      // var text = $(this).val();
       var text = $("#id_text").val();
-      // console.log(year);
+      var month = $('#id_month').val();
 
       $.ajax({
         url: "{% url 'climatologies:climaParam' %}",
         data: {
           'text': text,
+          'month': month,
           'year': year
         },
         dataType: 'json',
         success: function (data) {
-          if (data.is_taken) {
-            alert("El dato existe"+ "-" + text);
-          }
+            for(i = 0; i< data.length; i++){
+              $('#result').append('<p>'+data[i]['letter']+ ' ' + data[i]['freq']+ '</p>');
+            }
+            data = JSON.stringify(data);
+            console.log(data);
         }
       });
 
     });
-  </script>
+</script>
 {% endblock %}
 
-
 {% block content %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
+  <form method='post' class="navbar-form navbar-left">
+      {% csrf_token %}
+      <div class="form-group">
+        {% render_field form.text class="form-control" %}
+        <strong class="text-danger"> {{ form.text.errors }} </strong>
+      </div>
+      <div class="form-group">
+        {% render_field form.month class="form-control" %}
+        <strong class="text-danger"> {{ form.month.errors }} </strong>
+      </div>
+      <div class="form-group">
+        {% render_field form.year class="form-control" %}
+        <strong class="text-danger"> {{ form.year.errors }} </strong>
+      </div>
   </form>
+  <div id="result"></div>
 {% endblock %}

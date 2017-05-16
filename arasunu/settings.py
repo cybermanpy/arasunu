@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'departments.apps.DepartmentsConfig',
     'hydrologies.apps.HydrologiesConfig',
     'locations.apps.LocationsConfig',
+    'stations.apps.StationsConfig',
     'stationtypes.apps.StationtypesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'arasunu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ara',
+        'NAME': 'arasunu',
         'USER': 'postgres',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',

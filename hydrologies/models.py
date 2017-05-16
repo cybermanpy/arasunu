@@ -5,9 +5,11 @@ from __future__ import unicode_literals
 from django.db import models
 from locations.models import Location
 from stationtypes.models import StationType
+from stations.models import Station
 
 class Hydrology(models.Model):
     id_estacion = models.ForeignKey(Location, on_delete=models.CASCADE)
+    station = models.ForeignKey(Station, on_delete=models.CASCADE)
     id_tipo = models.ForeignKey(StationType, on_delete=models.CASCADE)
     nombre_estacion = models.CharField(max_length=60, blank=True, null=True)
     fecha = models.DateTimeField(blank=True, null=True)

@@ -5,3 +5,4 @@ from django.apps import AppConfig
 
 class HydrologiesConfig(AppConfig):
     name = 'hydrologies'
+    verbose_name = 'Hidrologias'
