@@ -28,7 +28,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{# % url 'climatologies:weather' % #}">Inicio</a>
+                <a class="navbar-brand" href="{% url 'weather' %}">Inicio</a>
               </div>
              
               <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -37,10 +37,11 @@
                 <ul class="nav navbar-nav">
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      Temperaturas <b class="caret"></b>
+                      Historicos <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="{% url 'climatologies:history' %}">Historicos</a></li>
+                      <li><a href="{% url 'climatologies:getForm' %}">Climatología</a></li>
+                      <li><a href="{% url 'hydrologies:getFormHydro' %}">Hidrología</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
@@ -73,7 +74,7 @@
             {# % endif % #}
         </header>
 
-        {% block content %} {% endblock %}
+        {% block content %}{% endblock %}
     </section>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>

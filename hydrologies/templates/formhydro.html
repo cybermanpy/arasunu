@@ -52,7 +52,7 @@
       var month = $('#id_month').val();
 
       $.ajax({
-        url: "{% url 'climatologies:climaParam' %}",
+        url: "{% url 'hydrologies:climaParam1' %}",
         data: {
           'text': text,
           'month': month,
@@ -60,21 +60,9 @@
         },
         dataType: 'json',
         success: function (data) {
-            // for(i = 0; i< data.length; i++){
-            //   $('#result').append('<p>'+data[i]['Letter']+ ' ' + data[i]['Freq']+ '</p>');
-            // }
-            // data = JSON.stringify(data);
-            data = "http://arasunu.softnando.com.net/api/v3/json/"+data.city+"/"+data.month+"/"+data.year+"/"
+            data = "http://arasunu.softnando.com.net/api/v4/json/"+data.city+"/"+data.month+"/"+data.year+"/"
             console.log(data);
             graphic(data);
-
-            // var p = d3.select("body").selectAll("p")
-            //    .data(data)
-            //    .enter()
-            //    .append("p")
-            //    .text(function (d,i) {return i;});
-
-            /* --------------------------------------- */
             }
       });
 
@@ -146,7 +134,7 @@ function graphic(data){
           .attr("y", 5)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("Temperatura");
+          .text("Altura");
 
 
       // Add bar chart

@@ -1,20 +1,61 @@
-{% extends 'layout.html' %}
-{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
 
-{% load staticfiles %}
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>Datos en tiempo real con D3</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'css/c3.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/stylesc3.css' %}" rel="stylesheet" type="text/css">
 
-{% block title %}
-    {{ title }}
-{% endblock %}
-
-{% block header %}
-    {{ title|upper }}
-{% endblock %}
-
-{% block javascript %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="{% static 'js/c3.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
-{% endblock %}
+    <!-- My script -->
+</head>
 
-{% block content %}
+<body>
+    <div class="center">
+        <div class="voteApp">
+            <div class="container">
+                <div class="comida">
+                    <button id="tacos" type="button" class="btn btn-primary btn-lg">Tacos</button>
+                    <p id="votos_tacos" class="bg-info">
+                        <span class="badge">0</span>
+                        <br> votos
+                    </p>
+                </div>
+                <div class="comida">
+                    <button id="paella" type="button" class="btn btn-success btn-lg">Paella</button>
+                    <p id="votos_paella" class="bg-info">
+                        <span class="badge">0</span>
+                        <br> votos
+                    </p>
+                </div>
+                <div class="comida">
+                    <button id="ceviche" type="button" class="btn btn-info btn-lg">Ceviche</button>
+                    <p id="votos_ceviche" class="bg-info">
+                        <span class="badge">0</span>
+                        <br> votos
+                    </p>
+                </div>
+                <div class="comida">
+                    <button id="mangu" type="button" class="btn btn-warning btn-lg">Mangú</button>
+                    <p id="votos_mangu" class="bg-info">
+                        <span class="badge">0</span>
+                        <br> votos
+                    </p>
+                </div>
+            </div>
+            <div id="total">
+                <span class="badge">0</span>
+                <br> Total de votos emitidos
+            </div>
+        </div>
+    </div>
+</body>
 
-{% endblock %}
+</html>

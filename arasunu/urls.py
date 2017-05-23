@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^', include('departments.urls', namespace='departments')),
     url(r'^', include('climatologies.urls', namespace='climatologies')),
     url(r'^', include('locations.urls', namespace='locations')),
+    url(r'^', include('hydrologies.urls', namespace='hydrologies')),
     url(r'^', Weather, name='weather'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

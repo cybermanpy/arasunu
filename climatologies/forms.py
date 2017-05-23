@@ -10,7 +10,9 @@ class FormSearch(forms.Form):
 
 class FormGraphic(forms.Form):
     city_list = City.objects.all().order_by('nombre')
-    text = forms.ChoiceField(choices=((x.nombre, x.nombre) for x in city_list ), error_messages={'required': 'Este campo es obligatorio'})
+    c = ((x.nombre, x.nombre) for x in city_list )
+    c = tuple([(u'', '------')] + list(c))
+    text = forms.ChoiceField(choices=c, error_messages={'required': 'Este campo es obligatorio'})
     n = tuple((str(n), str(n)) for n in range(1973, datetime.now().year + 1))
     months = [('1','Enero'),
                   ('2','Febrero'),
@@ -24,5 +26,7 @@ class FormGraphic(forms.Form):
                   ('10','Octubre'),
                   ('11','Noviembre'),
                   ('12','Diciembre'),]
-    month = forms.ChoiceField(months, error_messages={'required': 'Este campo es obligatorio'})
+    months = tuple([(u'', '------')] + list(months))
+    month = forms.ChoiceField(choices=months, error_messages={'required': 'Este campo es obligatorio'})
+    n = tuple([(u'', '------')] + list(n))
     year = forms.ChoiceField(choices=n, error_messages={'required': 'Este campo es obligatorio'})

@@ -44,12 +44,18 @@ def Weather(request):
 
 def ClimaJson(request):
     object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains='Luque', fecha__year=2013).order_by('fecha')[:5]
-    data = [{'data': item.tmax} for item in object_list]
-    return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
+    data = [{str(item.station.location.id_ciudad.nombre): item.tmax} for item in object_list]
+    data1 = {'comidas': data }
+    return HttpResponse(json.dumps(data1, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
 
 def ClimaJson2(request):
     object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains='Luque', fecha__year=2013).order_by('fecha')[:5]
     data = [{'Letter': item.tmax, 'Freq': item.tmin} for item in object_list]
+    return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
+
+def ClimaJson3(request, city, month, year):
+    object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains=city, fecha__month=month,  fecha__year=year).order_by('fecha')
+    data = [{'Letter': int(item.fecha.day), 'Freq': item.tmax} for item in object_list]
     return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
 
 def Graphic(request):
@@ -73,9 +79,16 @@ def climaParam(request):
     text = request.GET.get('text', None)
     month = request.GET.get('month', None)
     year = request.GET.get('year', None)
-    object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains=text, fecha__year=year, fecha__month=month).order_by('fecha')
-    data = [{'Freq': item.tmin, 'Letter': item.tmax} for item in object_list]
+    data = {
+        'city': text,
+        'month': month,
+        'year': year
+    }
     return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
+    # return HttpResponse(dump, content_type='application/json')
+    # object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains=text, fecha__year=year, fecha__month=month).order_by('fecha')
+    # data = [{'Freq': item.tmin, 'Letter': item.tmax} for item in object_list]
+    # return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
 
 def getForm(request):
     title = 'Arasunu'
