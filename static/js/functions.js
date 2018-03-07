@@ -22,7 +22,7 @@ function initialize() {
             $.ajax({ 
                 'async': false, 
                 'global': false, 
-                'url': "http://arasunu.softnando.com.net/api/v5/", 
+                'url': "http://192.168.1.125/api/v5/", 
                 'dataType': "json", 
                 'success': function (data) {
                      json = data; 

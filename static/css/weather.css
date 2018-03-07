@@ -143,11 +143,12 @@ body {
 
 
 .fallback-background {
-    background-image:url(http://arasunu.softnando.com.net/static/img/weather.png);
+    background-image:url(http://192.168.0.125:81/static/img/weather.png);
 }
 
 #rain-canvas, #weather-canvas, #cloud-canvas, #time-canvas, #lightning-canvas {
     position:absolute;
+    width: 900px;
     z-index: -1;
 }
 
@@ -200,7 +201,7 @@ body {
 }
 
 .nighttime {
-    background-image: url(http://arasunu.softnando.com.net/static/img/stardust.png);
+    background-image: url(http://192.168.0.125:81/static/img/stardust.png);
 }
 
 
@@ -296,11 +297,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .humidity {
-    background-image: url(http://arasunu.softnando.com.net/static/img/humidity.svg);
+    background-image: url(http://192.168.0.125:81/static/img/humidity.svg);
     padding-left: 25px;
 }
 .wind {
-    background-image: url(http://arasunu.softnando.com.net/static/img/flag.svg);
+    background-image: url(http://192.168.0.125:81/static/img/flag.svg);
     margin-left: 20px;
     padding-left: 20px;
 }

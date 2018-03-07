@@ -3,7 +3,7 @@ var chart;
 var chartData=[];
 
 $(document).ready(function() {
-    d3.json("http://arasunu.softnando.com.net/api/v1/json/", function(data) {
+    d3.json("http://192.168.1.125/api/v1/json/", function(data) {
         console.log(data);
         myFirebaseRef = data;
     });

@@ -46,7 +46,12 @@ def ClimaJson(request):
     object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains='Luque', fecha__year=2013).order_by('fecha')[:5]
     data = [{str(item.station.location.id_ciudad.nombre): item.tmax} for item in object_list]
     data1 = {'comidas': data }
-    return HttpResponse(json.dumps(data1, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
+    return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
+
+def get_cli(request):
+    cli = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains='Luque', fecha__year=2013).values('tmax', 'tmin').order_by('fecha')[:5]  # or simply .values() to get all fields
+    cli_list = list(cli)  # important: convert the QuerySet to a list object
+    return JsonResponse(cli_list, safe=False)
 
 def ClimaJson2(request):
     object_list = Climatology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains='Luque', fecha__year=2013).order_by('fecha')[:5]
@@ -131,3 +136,5 @@ def getFormc3(request):
 #         newdata.update(data['fields'])
 #         # newdata['pk'] = data['pk']
 #         return newdata
+
+# list_checkin = Userinfo.objects.filter(userid=pkuser, check__userid=pkuser, check__checktime__month=month, check__checktime__year=year).values('check__checktime').order_by('check__checktime')

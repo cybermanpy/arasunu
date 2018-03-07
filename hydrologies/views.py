@@ -37,3 +37,27 @@ def HydroJson(request, city, month, year):
     object_list = Hydrology.objects.filter(id_estacion_id__id_ciudad__nombre__icontains=city, fecha__month=month,  fecha__year=year).order_by('fecha')
     data = [{'Letter': int(item.fecha.day), 'Freq': item.max} for item in object_list]
     return HttpResponse(json.dumps(data, ensure_ascii=False, encoding="utf-8"), content_type='application/json')
+
+def viewMap(request):
+    title = 'Arasunu'
+    template = loader.get_template('risk_zone.html')
+    context = {
+        'title': title,
+    }
+    return HttpResponse(template.render(context, request))
+
+def viewStation(request):
+    title = 'Arasunu'
+    template = loader.get_template('stations.html')
+    context = {
+        'title': title,
+    }
+    return HttpResponse(template.render(context, request))
+
+def viewStationAuto(request):
+    title = 'Arasunu'
+    template = loader.get_template('stations_auto.html')
+    context = {
+        'title': title,
+    }
+    return HttpResponse(template.render(context, request))

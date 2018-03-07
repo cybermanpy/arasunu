@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=divice-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ol.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
     <!--<link rel="stylesheet" href="{% static 'css/c3.css' %}">-->
     <title> {% block title %}  {% endblock %} </title>
 </head>
@@ -49,7 +53,9 @@
                       Crecidas <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="">Listar</a></li>
+                      <li><a href="{% url 'hydrologies:viewMap' %}">Listar</a></li>
+                      <li><a href="{% url 'hydrologies:viewStation' %}">Estaciones</a></li>
+                      <li><a href="{% url 'hydrologies:viewStationAuto' %}">Estaciones Automaticas</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
@@ -78,10 +84,15 @@
     </section>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/rioPy.js' %}"></script>
+    <script src="{% static 'js/zonas.js' %}"></script>
+    <script src="{% static 'js/islas.js' %}"></script>
+    <script src="{% static 'js/estaciones.js' %}"></script>
+    <script src="{% static 'js/estacionesAutomaticas.js' %}"></script>
+    {% block javascript %}{% endblock %}
     <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>-->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <!--<script src="{% static 'js/c3.js' %}"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>-->
-    {% block javascript %}{% endblock %}
 </body>
 </html>

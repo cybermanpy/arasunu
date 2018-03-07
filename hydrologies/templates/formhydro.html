@@ -47,6 +47,7 @@
     });
 
     $("#id_year").change(function () {
+      $('#result').html('');
       var year = $(this).val();
       var text = $("#id_text").val();
       var month = $('#id_month').val();
@@ -60,7 +61,7 @@
         },
         dataType: 'json',
         success: function (data) {
-            data = "http://arasunu.softnando.com.net/api/v4/json/"+data.city+"/"+data.month+"/"+data.year+"/"
+            data = "http://192.168.1.125/api/v4/json/"+data.city+"/"+data.month+"/"+data.year+"/"
             console.log(data);
             graphic(data);
             }

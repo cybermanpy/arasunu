@@ -49,7 +49,9 @@
                       Crecidas <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="">Listar</a></li>
+                      <li><a href="{% url 'hydrologies:viewMap' %}">Listar</a></li>
+                      <li><a href="{% url 'hydrologies:viewStation' %}">Estaciones</a></li>
+                      <li><a href="{% url 'hydrologies:viewStationAuto' %}">Estaciones Automaticas</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">

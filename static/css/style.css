@@ -12,4 +12,8 @@ body {
     .table {
         font-size: 11px
     }
+    #map {
+        width: 850px;
+        height: 400px;
+    }
 }

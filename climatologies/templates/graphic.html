@@ -12,7 +12,7 @@
 {% block content %}
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script>
-        d3.json("http://arasunu.softnando.com.net/api/v1/json/", function (data){
+        d3.json("http://192.168.1.125/api/v1/json/", function (data){
             var canvas = d3.select("body").append("svg")
                 .attr("width", 500)
                 .attr("height", 500)

@@ -47,6 +47,7 @@
     });
 
     $("#id_year").change(function () {
+      $('#result').html('');
       var year = $(this).val();
       var text = $("#id_text").val();
       var month = $('#id_month').val();
@@ -64,7 +65,7 @@
             //   $('#result').append('<p>'+data[i]['Letter']+ ' ' + data[i]['Freq']+ '</p>');
             // }
             // data = JSON.stringify(data);
-            data = "http://arasunu.softnando.com.net/api/v3/json/"+data.city+"/"+data.month+"/"+data.year+"/"
+            data = "http://192.168.1.125/api/v3/json/"+data.city+"/"+data.month+"/"+data.year+"/"
             console.log(data);
             graphic(data);
 
